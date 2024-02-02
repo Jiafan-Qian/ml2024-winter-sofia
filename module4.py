@@ -23,6 +23,6 @@ X = int(input("Please enter an integer: "))
 # outputs: "-1" if there were no such X among N read numbers, 
 # or the index (from 1 to N) of this X if the user inputed it before
 if X in numbers:
-    print(numbers.index(X))
+    print(numbers.index(X) + 1)
 else:
     print("-1")
