@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score
 # X is a real number, Y is a non-negative integer.
 def createPairs(n):
     pairs = np.zeros((n, 2))
-    for i in range(N):
+    for i in range(n):
         x = float(input(f"Enter value x for point {i + 1}: "))
         y = int(input(f"Enter value y for point {i + 1}: "))
     pairs[i] = [x, y]
@@ -26,8 +26,8 @@ print(f"value of N: {N}")
 TrainS = createPairs(N)
 
 # asks the user for input M (positive integer) and reads it.
-M = int(input("Please input N (positive integer): "))
-print(f"value of N: {M}")
+M = int(input("Please input M (positive integer): "))
+print(f"value of M: {M}")
 # use createPairs to create test set TestS = {(x, y)_i}, i = 1..M.
 TestS = createPairs(M)
 
@@ -48,6 +48,9 @@ yTest = TestS[:, 1]
 
 # Note: you can try the following range of k: 1 <= k <= 10.
 for k in range(1, 11):
+    # stop when k is greater than the number of sample points (N)
+    if k > N:
+        break
     # find the model and accuracy for current k
     knnClassification = KNeighborsClassifier(n_neighbors=k)
     knnClassification.fit(xTrain, yTrain)
